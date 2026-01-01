@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container w-70 p-5 mt-5 border border-3 border-danger">
+    {% if employees %}
+    <table class="table table-bordered text-center">
+        <tr>
+            <th>Image</th>
+            <th>Employee ID</th>
+            <th>Name</th>
+            <th>Dept Name</th>
+            <th>Salary</th>
+            <th>Designation</th>
+
+
+        </tr>
+        {% for employee in employees %}
+        <tr>
+            <td>
+                {% if employee.image %}
+                <img src="{{ employee.image.url }}" height="100" width="150">
+                {% else %}
+                No Image
+                {% endif %}
+            </td>
+            <td>{{ employee.empid }}</td>
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.deptname }}</td>
+            <td>{{ employee.salary}}</td>
+            <td>{{ employee.designation }}</td>
+
+
+        </tr>
+        {% endfor %}
+
+    </table>
+    {% else %}
+    <h2 class="text-center">No Search Results</h2>
+    {% endif %}
+</div>
+{% endblock %}

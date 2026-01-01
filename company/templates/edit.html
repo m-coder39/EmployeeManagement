@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container w-70 p-5 mt-5 border border-3 border-danger">
+    <h3 class="mt-5 mb-5">Edit Details</h3>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form|crispy}}
+        <input type="submit" class="btn btn-danger">
+    </form>
+
+</div>
+{% endblock %}

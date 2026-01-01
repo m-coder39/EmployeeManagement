@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container w-70 p-5 mt-5 border border-3 border-danger">
+    <h3 class="mt-5 mb-5">Employees</h3>
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+        <tr>
+
+            <th>Employee ID</th>
+            <th>Name</th>
+            <th>Dept Name</th>
+            <th>Salary</th>
+            <th>Designation</th>
+            <th>Image</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for employee in employees %}
+        <tr>
+
+            <td>{{ employee.empid }}</td>
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.deptname }}</td>
+            <td>{{ employee.salary}}</td>
+            <td>{{ employee.designation }}</td>
+            <td><img src="{{employee.image.url}}" height="140px " width="210px"></td>
+            <td>
+                <a class="btn btn-danger" href="{% url 'employees:Detail' employee.id %}">Details</a>
+                <a class="btn btn-danger" href="{% url 'employees:Edit' employee.id %}">Edit</a>
+                <a class="btn btn-danger" href="{% url 'employees:Delete' employee.id %}">Delete</a>
+            </td>
+        </tr>
+        {% empty %}
+        {% endfor %}
+        </tbody>
+
+    </table>
+
+
+</div>
+{% endblock %}
